@@ -78,6 +78,39 @@ E.MaritalStatus='".$data['MaritalStatus']."',
       }
     }
 
+public function ajouter($data)
+
+{
+  $sql="";
+  /*$sql="UPDATE employee as E 
+  inner join contact as C on E.ContactID=C.ContactID 
+  left join employee as EM on E.ManagerID=EM.EmployeeID 
+  left join contact as CM on EM.ContactID=CM.ContactID 
+  SET E.NationalIDNumber='".$data['NationalIDNumber']."',
+   E.LoginID='".$data['LoginID']."',
+   E.BirthDate='".$data['BirthDate']."',
+  E.MaritalStatus='".$data['MaritalStatus']."',
+    E.Gender='".$data['Gender']."',
+      C.EmailAddress='".$data['EmailAddress']."',
+      C.EmailPromotion='".$data['EmailPromotion']."',
+      C.Phone='".$data['Phone']."',
+      E.Title='".$data['Title']."'
+      where E.EmployeeID=".$data['EmployeeID'];*/
+        
+        try {
+          $dbh = new PDO('mysql:host=localhost;dbname=adventurework;charset=utf8', 'root', '');
+          $stmt=$dbh->prepare($sql);
+  
+          //die(print_r( $stmt));
+          return $stmt->execute();
+  
+
+        } catch (PDOException $e) {
+            print "Erreur !: " . $e->getMessage() . "<br/>";
+           
+        }
+      }
+
     public function deleteEmploye($EmployeeID)
     {
       $Employe = EmployeeModel::listOne($EmployeeID);

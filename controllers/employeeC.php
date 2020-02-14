@@ -68,7 +68,44 @@ class EmployeeController {
 
 
     
+public function add()
+{
 
+  require_once MODELS.DS.'employeeM.php';
+  $m=New EmployeeModel();
+  require_once CLASSES.DS.'view.php';
+  $v=new View();
+
+if(isset($_POST['submit'])) 
+{
+  $data= array
+  (
+    
+    'EmployeeID'=>$_POST['EmployeeID'],
+    'NationalIDNumber'=>$_POST['NationalIDNumber'],
+    'LoginID' => $_POST['LoginID'],
+    'BirthDate' => $_POST['BirthDate'],
+    'MaritalStatus' => $_POST['MaritalStatus'],
+    'Gender' => $_POST['Gender'],
+    'EmailAddress' => $_POST['EmailAddress'],
+    'EmailPromotion' => $_POST['EmailPromotion'],
+    'Phone' => $_POST['Phone'],
+    'Title' => $_POST['ETitle']
+  
+  );
+      //die(print_r($data));
+      if ($m->ajouter($data)) {
+      //$v->render('home', 'index');
+      $this->index();
+
+  }
+} 
+else     
+{ 
+  $v->render('employee','ajout');
+}
+
+}
 
     public function delete($id=null)
     {

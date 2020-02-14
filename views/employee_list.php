@@ -18,7 +18,13 @@
       public 'HireDate' => string '1998-02-06 00:00:00' (length=19)
 -->
 
-  <div class="row">
+  <div class="  row float-right">
+
+<?php  echo '<a href="index.php?c=employee&m=add" data-toggle="tooltip" title="ajouter" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i></a>';?>
+</div>
+<div class="row" ></div>
+<div class="row">
+
     <table class="table table-sm">
     <thead>
       <tr>
