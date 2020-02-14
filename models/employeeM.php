@@ -65,7 +65,7 @@ E.MaritalStatus='".$data['MaritalStatus']."',
         $dbh = new PDO('mysql:host=localhost;dbname=adventurework;charset=utf8', 'root', '');
         $stmt=$dbh->prepare($sql);
 
-
+//die(print_r($stmt));
         return $stmt->execute();
 
 
