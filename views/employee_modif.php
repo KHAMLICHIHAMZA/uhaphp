@@ -91,7 +91,7 @@ object(stdClass)[6]
     <label class="col-md-4 control-label">Date de naissance :</label>
     <div class="col-md-8">
     <input type="text" name="BirthDate" class="form-control" 
-    placeholder="BirthDate" value="<?php if (isset($e->BirthDate)) echo date('d-m-Y H:i:s',strtotime($e->BirthDate)); ?>">
+    placeholder="BirthDate" value="<?php if (isset($e->BirthDate)) echo date('Y-m-d H:i:s',strtotime($e->BirthDate)); ?>">
     </div>
   </div>
   <div class="row form-group">

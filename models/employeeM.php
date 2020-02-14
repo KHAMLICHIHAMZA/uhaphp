@@ -65,12 +65,32 @@ E.MaritalStatus='".$data['MaritalStatus']."',
         $dbh = new PDO('mysql:host=localhost;dbname=adventurework;charset=utf8', 'root', '');
         $stmt=$dbh->prepare($sql);
 
-//die(print_r($stmt));
+        //die(print_r( $stmt));
         return $stmt->execute();
 
 
+
         
         
+      } catch (PDOException $e) {
+          print "Erreur !: " . $e->getMessage() . "<br/>";
+         
+      }
+    }
+
+    public function deleteEmploye($EmployeeID)
+    {
+      $Employe = EmployeeModel::listOne($EmployeeID);
+      $sql='DELETE employee , contact FROM employee  INNER JOIN contact
+      WHERE employee.ContactID="'.$Employe->ContactID.'" 
+      AND contact.ContactID= "'.$Employe->ContactID.'"';
+      try {
+        $dbh = new PDO('mysql:host=localhost;dbname=adventurework;charset=utf8', 'root', '');
+        $stmt=$dbh->prepare($sql);
+
+        //die(print_r($stmt));
+        return $stmt->execute();
+        $dbh = null;
       } catch (PDOException $e) {
           print "Erreur !: " . $e->getMessage() . "<br/>";
           die();

@@ -32,7 +32,6 @@ class EmployeeController {
       $m=New EmployeeModel();
       require_once CLASSES.DS.'view.php';
       $v=new View();
-      //die(print_r($_POST));
   if(isset($_POST['submit'])) 
     {
       $data= array
@@ -50,12 +49,16 @@ class EmployeeController {
         'Title' => $_POST['ETitle']
       
       );
-      if ($m->up($data)) {
-          $v->render('home', 'index');
+          //die(print_r($data));
+          if ($m->up($data)) {
+          //$v->render('home', 'index');
+          $this->index();
+
       }
     } 
     else     
     { 
+
       $employee=$m->listOne($id) ;
       $v->setVar('e',$employee);
       $v->render('employee','modif');
@@ -67,9 +70,24 @@ class EmployeeController {
     
 
 
-    public function delete($id=null){
-      //die('suppression d\'un employé');
-    }
+    public function delete($id=null)
+    {
+        require_once MODELS.DS.'employeeM.php';
 
-}
+        $m=new EmployeeModel();
+
+        require_once CLASSES.DS.'view.php';
+
+        $v=new View();
+
+        if(isset($id) && $id!=null ) 
+        {
+
+          $m->deleteEmploye($id);
+
+        }
+        //$v->render('home','index');
+        $this->index();
+    }
+    }
 ?>
